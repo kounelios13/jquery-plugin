@@ -3,12 +3,21 @@
 	$.fn.helloWorld = function( options ) {
 
 		// Establish our default settings
-		var settings = $.extend({
-			text         : 'Hello, World!',
+		var settings;
+		if(typeof options == "string")
+			settings = $.extend({
+			text         : options || "Hello World!!!",
 			color        : null,
 			fontStyle    : null,
 			complete	 : null
 		}, options);
+		else
+			settings = $.extend({
+				text         : 'Hello,empty World!',
+				color        : null,
+				fontStyle    : null,
+				complete	 : null
+			}, options);
 
 		return this.each( function() {
 			$(this).text( settings.text );
